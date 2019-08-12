@@ -54,6 +54,11 @@ namespace Task.Api
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<TasksContext>();
+                context.Database.Migrate();
+            }
 
             app.UseCors(builder => builder
                 .AllowAnyOrigin()

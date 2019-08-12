@@ -15,7 +15,7 @@ SQL Server (any version)
 Visual Studio (any version)
 
 ### Installing
-This can be installed using docker or running as simple API's. 
+This can be installed using docker or running as simple API's. Once you cloned this repository follow this steps:
 
 1) Create a Database in your local repository
 2) Change the ConnectionString in User.Api in appsettings.json (if you're running it in development mode, appsettings.Development.json)
@@ -43,3 +43,8 @@ Add additional notes about how to deploy this on a live system
 ## Authors
 
 * **Diego Nudler** - *Initial work* - (https://github.com/dnudler)
+
+## Important Architecture Note
+
+This solution needs a API Gateway, I would've used the Microsoft Azure API Management application to do it. 
+I don't have the credentials to create it for this solution. 

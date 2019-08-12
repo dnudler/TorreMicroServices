@@ -1,0 +1,22 @@
+﻿@model Torre.Web.Models.Task
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Task</h1>
+
+<h3>Are you sure you want to delete the task: <label style="color: blue;">@Model.Description</label>?</h3>
+<div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { Class = "text-danger" })
+    @using (Html.BeginForm("Delete", "Tasks", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.UserId)
+        @Html.HiddenFor(m => m.Id)
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+        @Html.ActionLink("Back to List", "Index", "Tasks", new {userId = Model.UserId},new { Class="btn btn-primary"})
+
+    }
+
+</div>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Torre.Web.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Users</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Users", null, new { Class="btn btn-info"})
+</p>
+<table class="table" style="width: 100%;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Users", new { id = item.Id}, new { Class="linkSeparation"})
+                @Html.ActionLink("Tasks", "Index", "Tasks", new { userId = item.Id}, new { Class="linkSeparation"})
+                @Html.ActionLink("Delete", "Delete", "Users", new { id = item.Id}, new { Class="linkSeparation"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

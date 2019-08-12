@@ -1,0 +1,29 @@
+﻿@model Torre.Web.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Edit", "Users", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true, "", new { Class = "text-danger" })
+            @Html.HiddenFor(m => m.Id)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, null, new {Class = "control-label"})
+                @Html.TextBoxFor(m => m.Name, null, new {Class = "form-control"})
+                @Html.ValidationMessageFor(m => m.Name, null, new {Class = "text-danger"})
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Back to List", "Index", "Users",null,  new { Class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+﻿@model Torre.Web.Models.Task
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Task</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Create", "Tasks", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.UserId)
+            @Html.ValidationSummary(true, "", new { Class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, null, new {Class = "control-label"})
+                @Html.TextBoxFor(m => m.Description, null, new {Class = "form-control"})
+                @Html.ValidationMessageFor(m => m.Description, null, new {Class = "text-danger"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.State, null, new { Class = "control-label" })
+                @Html.DropDownListFor(m => m.State, new SelectList(Model.StateList, "Value", "Text", -1), new { @class = "form-control mdb-select colorful-select dropdown-primary", @style = "display: block !important;" })
+                @Html.ValidationMessageFor(m => m.State, null, new { Class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+                @Html.ActionLink("Back to List", "Index", "Tasks", new {userId = Model.UserId},new { Class="btn btn-primary"})
+            </div>
+        }
+        </div>
+</div>
+
+

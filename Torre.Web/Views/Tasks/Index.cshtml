@@ -1,0 +1,43 @@
+﻿@model Torre.Web.ViewModels.TasksViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Model.User.Name Tasks</h1>
+
+<p>
+    @Html.ActionLink("Create Task", "Create", "Tasks", new { userId = Model.UserId }, new { Class="btn btn-info"})
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Tasks)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateDescription)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id, userId = item.UserId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id, userId = item.UserId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.ActionLink("Back to Users List", "Index", "Users", null, new { Class="btn btn-primary"})
